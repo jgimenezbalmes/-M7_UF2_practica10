@@ -11,5 +11,11 @@ a = df.groupby(by=['date', 'location']).sum()
 
 a.to_csv(r'C:\Users\Joan\Desktop\M7_UF2_practica10\10_B\casospermes.csv')
 b = pd.read_csv(r'C:\Users\Joan\Desktop\M7_UF2_practica10\10_B\casospermes.csv')
-plt4.axline(b.date, b.total_cases)
+c = b.groupby('location').total_cases.apply(list).reset_index()
+d = c.head(10)
+mesos = [1,2,3,4,5,6,7,8,9,10,11,12]
+#index = [str(x) for x in d.total_cases]
+plt4.plot(mesos, d.total_cases)
+#plt4.axline(b.date, b.total_cases)
 plt4.show()
+print (d)
