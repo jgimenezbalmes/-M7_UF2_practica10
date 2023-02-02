@@ -5,22 +5,19 @@ import batterypower as bp
 
 def subplots():
     window = plt.figure()
-    #Determinem les proporcions de separacio de cada sector del grafic
-    #explode = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
     #Determinem que la figura tindra quatre seccions
     fig, axs = plt.subplots(2, 2)
     #Borrem el contingut de la posicio inferior dreta (per si un cas sortis alguna informacio)
     fig.delaxes(ax=axs[1,1])
     #Titol del primer grafic
-    axs[0, 0].set_title('Ciutats per població')
-    #Posem el primer grafic a la posicio superior esquerra (0,0), i indiquem que les dades siguin de la columna
-    #population, que es classifiqui segons City, i que es faci explode com s'ha indicat a l'array anterior
+    axs[0, 0].set_title('Clockspeed per mòbil')
+    #Posem el primer grafic a la posicio superior esquerra (0,0)
     axs[0, 0].bar(cs.a.id, cs.a.clock_speed, color ='maroon', width=6)
-    #Posició superior dreta, fem el mateix que abans pero amb Density M2
-    axs[0, 1].set_title('Ciutats per densitat en m2')
-    axs[0, 1].bar(bp.a.id, bp.a.battery_power, width=6)
-    #Posicio inferior esquerra, fem el mateix pero amb Density KM2
-    axs[1, 0].set_title('Ciutats per densitat en km2')
+    #Posició superior dreta, fem el mateix que abans pero amb battery power
+    axs[0, 1].set_title('Battery power per mòbil')
+    axs[0, 1].bar(bp.a.id, bp.a.battery_power, color ='green', width=6)
+    #Posicio inferior esquerra, fem el mateix pero amb pixel height
+    axs[1, 0].set_title('Pixel height per mòbil')
     axs[1, 0].bar(mp.a.id, mp.a.px_height, width=6)
     #Fem que la figure surti per pantalla
     plt.show()
